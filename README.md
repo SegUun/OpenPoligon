@@ -1,3 +1,3 @@
 # OpenPoligon
-Используемый фреймворк: Django
+Используемый фреймворк: Django <br>
 Языки: HTML5, Python, CSS
