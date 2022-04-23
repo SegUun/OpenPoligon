@@ -3,5 +3,6 @@ from django.http import HttpResponse
 
 
 def index(request):
-    context = {'title': 'Test'}
+    a = ['--=\/\/-+==-*='*2 for i in range(1000)]
+    context = {'title': 'Test', 'test1': ''.join(a)}
     return render(request, 'polygon/index.html', context)
