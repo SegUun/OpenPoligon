@@ -1,0 +1,77 @@
+/*  шрифт */
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+/*  прелоадер */
+
+.loaderArea {
+
+    background: white;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+    z-index: 100000;
+  }
+
+  .loader {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -20px;
+  }
+    .text {
+        color: black;
+        font-size: 30px;
+        position: absolute;
+        left: 50%;
+        margin-left: -56px;
+        top: 50%;
+        margin-top: 100px;
+    }
+
+  .loader:before,
+  .loader:after {
+    content: "";
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    border-radius: -1px;
+    position: absolute;
+    top: 0;
+  }
+
+  .loader:before {
+    animation: animate 1s infinite linear;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: rotate(0)  scale(0, 2);
+    }
+
+    50% {
+      transform: rotate(1020deg)  scale(3, 3);
+    }
+  }
+
+
+  .loader:after {
+    animation: animate2 1s infinite linear;
+  }
+
+  @keyframes animate2 {
+    0% {
+      transform: rotate(0)  scale(2, 0);
+    }
+
+    100% {
+      transform: rotate(-1020deg)  scale(3, 3);
+    }
+  }
