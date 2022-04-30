@@ -1,6 +1,16 @@
+body {
+    background-color: black;
+}
+
+main {
+    text-align: center;
+}
+
 .navbar-default {
     background-color: black;
-    border-color: #E7E7E7;
+    border-color: black;
+    border-radius: 0px;
+    margin-bottom: 0px;
 }
 
 .navbar-default .navbar-brand {
