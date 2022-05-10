@@ -30,186 +30,49 @@
 
 <div class="loaderArea">
     <div class="loader"></div>
-    <div class="text">Loading...</div>
+    <div class="text"></div>
 </div>
 
-<nav class="navbar navbar-default" style="border-radius: 0px; margin-bottom: 0px; border-color: black;">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">OpenPolygon</a>
-        </div>
+<div id="app" class="light">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">OpenPolygon</a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="/">first button</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="/">second button</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="/">third button</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">first button</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="/">second button</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="/">third button</a></li>
+                </ul>
+                <ul class="nav navbar-nav" style="float: right;">
+                    <li><a href="#" id="theme-toggle">Theme</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 
-<!--<h1 align="center" style="margin-top: 205px">hehe</h1>-->
+    <div class="animation"></div>
+    <div class="animation2"></div>
 
-<script id="rendered-js" type="module" >
-import p5 from "https://cdn.skypack.dev/p5@1.4.1";
-export class GridUnit {
-    constructor(edgeLength, center) {
-        this.edgeLength = edgeLength;
-        this.center = center;
-        this.upperLeftCorner = {
-            x: this.center.x - edgeLength / 2,
-            y: this.center.y - edgeLength / 2,
-        };
-    }
-}
-let dividedGridUnits = [];
-export class Grid {
-    constructor(x, y, unitEdgeLength, repetition) {
-        this.x = x;
-        this.y = y;
-        this.unitEdgeLength = unitEdgeLength;
-        this.repetition = repetition;
-        this.edgeLength = unitEdgeLength * repetition;
-        this.centerPoints = this.generateCenterPoints(this.unitEdgeLength, this.repetition);
-        this.units = this.generateGridUnit(this.centerPoints, this.unitEdgeLength);
-        this.upperLeftPoint = { x: this.x, y: this.y };
-        this.lowerRightPoint = {
-            x: this.upperLeftPoint.x + this.edgeLength,
-            y: this.upperLeftPoint.y + this.edgeLength,
-        };
-    }
-    generateCenterPoints(unit, repetition) {
-        let coordinates = [];
-        for (let i = 0; i < repetition; i++) {
-            for (let j = 0; j < repetition; j++) {
-                coordinates = [
-                    ...coordinates,
-                    {
-                        x: unit * i + unit / 2 + this.x,
-                        y: unit * j + unit / 2 + this.y,
-                    },
-                ];
-            }
-        }
-        return coordinates;
-    }
-    generateGridUnit(centerPoints, unitEdgeLength) {
-        return centerPoints.map((p) => {
-            return new GridUnit(unitEdgeLength, p);
-        });
-    }
-    divide() {
-        if (this.edgeLength < 500) {
-            dividedGridUnits = [...dividedGridUnits, ...this.units];
-            return;
-        }
-        this.units.map((unit) => {
-            if (Math.floor(Math.random() * 100) >= 80) {
-                dividedGridUnits = [...dividedGridUnits, unit];
-                return;
-            }
-            const newRepetitions = [2, 4, 8];
-            const newRepetition = newRepetitions[Math.floor(Math.random() * newRepetitions.length)];
-            const newGrid = new Grid(unit.upperLeftCorner.x, unit.upperLeftCorner.y, unit.edgeLength / newRepetition, newRepetition);
-            newGrid.divide();
-        });
-    }
-}
-export const sketch = (p) => {
-    const canvasWidth = 1200;
-    const canvasHeight = canvasWidth;
-    class Upper {
-        constructor(unit) {
-            this.baseDelay = 0;
-            this.alpha = 255;
-            this.isStop = false;
-            this.startCenter = unit.center;
-            this.edgeLength = unit.edgeLength;
-            this.currentPosition = Object.assign({}, this.startCenter);
-            this.delay = p.random(0, 30);
-            this.speed = p.random(1, 5);
-        }
-        restart() {
-            this.baseDelay = p.frameCount;
-            this.isStop = false;
-        }
-        move() {
-            if (this.isStop || p.frameCount < this.delay + this.baseDelay) {
-                return;
-            }
-            if (p.dist(this.startCenter.x, this.startCenter.y, this.currentPosition.x, this.currentPosition.y) <=
-                (canvasHeight * 5) / this.edgeLength) {
-                this.currentPosition = {
-                    x: this.currentPosition.x - this.speed,
-                    y: this.currentPosition.y - this.speed,
-                };
-                this.alpha -= this.speed;
-            }
-            else {
-                this.isStop = true;
-                this.currentPosition = Object.assign({}, this.startCenter);
-                this.alpha = 255;
-            }
-        }
-        display() {
-            p.fill(230, 230, 230, this.alpha);
-            p.push();
-            p.translate(this.currentPosition.x, this.currentPosition.y);
-            p.triangle(-this.edgeLength / 2, -this.edgeLength / 2, -this.edgeLength / 2 + this.edgeLength, -this.edgeLength / 2, -this.edgeLength / 2, -this.edgeLength / 2 + this.edgeLength);
-            p.pop();
-        }
-    }
-    let uppers = [];
-    p.setup = () => {
-        p.createCanvas(canvasWidth, canvasHeight);
-        p.angleMode(p.DEGREES);
-        p.noStroke();
-        const repetition = 11;
-        const unitEdgeLength = 500 / repetition;
-        const grid = new Grid(250, 250, unitEdgeLength, repetition);
-        grid.divide();
-        dividedGridUnits.map((unit) => {
-            uppers = [...uppers, new Upper(unit)];
-        });
-    };
-    p.draw = () => {
-        p.background("#000000");
-        p.translate(canvasWidth / 2, canvasHeight / 2);
-        p.rotate(45);
-        p.translate(-canvasWidth / 2, -canvasHeight / 2);
-        if (uppers.every((upper) => {
-            return upper.isStop;
-        })) {
-            uppers.map((upper) => {
-                upper.restart();
-                upper.display();
-            });
-        }
-        else {
-            uppers.map((upper) => {
-                upper.move();
-                upper.display();
-            });
-        }
-    };
-};
-new p5(sketch);
-</script>
-<main style="background-color: black;"><canvas id="defaultCanvas0" class="p5Canvas"></canvas></main>
+    <main>
+        <canvas id="defaultCanvas0" class="p5Canvas"></canvas>
+    </main>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -221,5 +84,8 @@ new p5(sketch);
         crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script id="rendered-js" type="module" src="{% static 'js/active.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/theme.js' %}"></script>
+
 </body>
 </html>

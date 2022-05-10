@@ -1,20 +1,75 @@
-.navbar-default {
-    background-color: black;
-    border-color: #E7E7E7;
+main {
+    text-align: center;
 }
 
-.navbar-default .navbar-brand {
+/* светлая тема */
+.light {
+    background-color: black;
+    height: 100vh;
+}
+
+.light .animation {
+    background-color: rgb(255, 255, 255);
+  }
+
+.light .animation2 {
+    background-color: black;
+  }
+
+.light .navbar-default {
+    background-color: black;
+    border-color: black;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+.light .navbar-default .navbar-brand {
     color: white;
 }
 
-.navbar-default .navbar-nav > li > a {
+.light .navbar-default .navbar-nav > li > a {
     color: white;
     margin-left: 50px;
 }
 
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
+.light .navbar-default .navbar-nav > li > a:hover,
+.light .navbar-default .navbar-nav > li > a:focus {
     color: grey;
 }
 
 
+
+/* темная тема */
+.dark {
+    background-color: white;
+    height: 100vh;
+}
+
+.dark .animation {
+    background-color: rgb(000, 000, 000);
+}
+
+.dark .animation2 {
+    background-color: rgb(255, 255, 255);
+}
+
+.dark .navbar-default {
+    background-color: white;
+    border-color: white;
+    border-radius: 0px;
+    margin-bottom: 0px;
+  }
+
+.dark .navbar-default .navbar-brand {
+    color: black;
+}
+
+.dark .navbar-default .navbar-nav > li > a {
+    color: black;
+    margin-left: 50px;
+}
+
+.dark .navbar-default .navbar-nav > li > a:hover,
+.dark .navbar-default .navbar-nav > li > a:focus {
+    color: rgb(207, 207, 207);
+}
