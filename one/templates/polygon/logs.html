@@ -9,6 +9,7 @@
 
     <title>{{title}}</title>
 
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
@@ -27,13 +28,13 @@
 </head>
 
 <body>
+<div id="app" class="light">
 
 <div class="loaderArea">
     <div class="loader"></div>
     <div class="text"></div>
 </div>
 
-<div id="app" class="light">
     {% include 'inc/nav.html' %}
 
     <div class="animation"></div>
@@ -44,10 +45,13 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Severenity</th>
-                    <th scope="col">Event</th>
+                    <th scope="col" style="width: 3%">№</th>
+                    <th scope="col" style="width: 10%">Time</th>
+                    <th scope="col" style="width: 5%">Severenity</th>
+                    <th scope="col" style="width: 15%">Event</th>
+                    <th scope="col" style="width: 15%">Type of the event</th>
+                    <th scope="col" style="width: 13%">Type of object</th>
+                    <th scope="col" style="width: 10%">State of the related object</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,10 +65,25 @@
                 {% endfor %}
                 </tbody>
               </table>
+            <div class="zab_div">Zabbix Events</div>
+            <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+            <script>
+              // Accepts any class name
+              var rellax = new Rellax('.zab_div');
+            </script>
+            <script>
+              // Also can pass in optional settings block
+              var rellax = new Rellax('.zab_div', {
+                speed: -2,
+                center: false,
+                wrapper: null,
+                round: true,
+                vertical: true,
+                horizontal: false
+              });
+            </script>
         </div>
     </main>
-</div>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
         integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
@@ -74,8 +93,10 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+  
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/theme.js' %}"></script>
-
+<script type="text/javascript" src="{% static 'js/rellax.js' %}"></script>
 </body>
 </html>

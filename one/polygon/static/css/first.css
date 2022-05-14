@@ -12,10 +12,26 @@ main {
     height: 100vh;
 }
 
+.light .zab_div {
+    font-size: 54px; 
+    color: white; 
+    display: inline-block; 
+    margin-right: 100px; 
+    border-left: 3px solid transparent; 
+    border-color: white; 
+    height: 100%; 
+    padding:15px;
+}
+
 .light .logs .table {
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
     color: white;
+    background-color: black;
+
+    width: 1250px; 
+    margin-right: 175px; 
+    display: inline-block;
 }
 
 /* network topology div class */
@@ -23,9 +39,7 @@ main {
     color: white; 
     font-size: 60px; 
     margin-top: 200px;
-    /* font-weight: bold; */
     display:inline-block;
-    /* font-family: monospace; */
     clip-path: inset(0 1.3ch 0 0);
     animation: l 1s steps(6) infinite;
   }
@@ -55,14 +69,53 @@ main {
     color: white;
 }
 
+.light .middle{
+    position: absolute;
+    top: 50%;
+    left: 500px;
+    transform: translate(-50%,-50%);
+  }
+
+.light .btn{
+    position: relative;
+    display: block;
+    color: black;
+    /* font-size: 14px;     */
+    margin: 30px 0;
+    padding: 14px 60px;
+    overflow: hidden;
+    transition: 1s all ease;
+  }
+
+.light .btn::before{
+    background: white;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+  }
+  
+.light .btn3::before{
+    width: 100%;
+    height: 0%;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+
+.light .btn3:hover::before{
+    height: 380%;
+  }
+
 .light .navbar-default .navbar-nav > li > a {
     color: white;
-    margin-left: 50px;
+    margin-left: 0px;
 }
 
 .light .navbar-default .navbar-nav > li > a:hover,
 .light .navbar-default .navbar-nav > li > a:focus {
-    color: grey;
+    color: black;
 }
 
 
@@ -73,10 +126,27 @@ main {
     height: 100vh;
 }
 
+.dark .zab_div {
+    /* margin-top: 50px; */
+    font-size: 54px; 
+    color: black; 
+    display: inline-block; 
+    margin-right: 100px; 
+    border-left: 3px solid transparent; 
+    border-color: black; 
+    height: 100%; 
+    padding:15px;
+}
+
 .dark .logs .table {
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
     color: black;
+    background-color: white;
+
+    width: 1250px; 
+    margin-right: 175px; 
+    display: inline-block;
 }
 
 /* network topology div class */
@@ -114,14 +184,53 @@ main {
     color: black;
 }
 
+.dark .middle{
+    position: absolute;
+    top: 50%;
+    left: 500px;
+    transform: translate(-50%,-50%);
+  }
+
+.dark .btn{
+    position: relative;
+    display: block;
+    color: black;
+    /* font-size: 14px;     */
+    margin: 30px 0;
+    padding: 14px 60px;
+    overflow: hidden;
+    transition: 1s all ease;
+  }
+
+.dark .btn::before{
+    background: black;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+  }
+  
+.dark .btn3::before{
+    width: 100%;
+    height: 0%;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+
+.dark .btn3:hover::before{
+    height: 380%;
+  }
+
 .dark .navbar-default .navbar-nav > li > a {
     color: black;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 .dark .navbar-default .navbar-nav > li > a:hover,
 .dark .navbar-default .navbar-nav > li > a:focus {
-    color: rgb(207, 207, 207);
+    color: white;
 }
 
 /*  Scrollbar */
@@ -131,12 +240,10 @@ body::-webkit-scrollbar {
    
 body::-webkit-scrollbar-track {
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-    /* border-radius: 5px; */
     background-color: #f9f9fd;
   }
    
 body::-webkit-scrollbar-thumb {
-    /* border-radius: 5px; */
     background: linear-gradient(240deg, #000000, #434343, #ECE9E6);
     outline: 1px solid slategrey;
   }
