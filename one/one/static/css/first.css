@@ -12,7 +12,7 @@ main {
     height: 100vh;
 }
 
-.light .logs {
+.light .logs .table {
     margin-top: 100px;
     text-align: center;
     color: white;
@@ -61,7 +61,7 @@ main {
     height: 100vh;
 }
 
-.light .logs {
+.dark .logs .table {
     margin-top: 100px;
     text-align: center;
     color: black;

@@ -27,13 +27,13 @@
 </head>
 
 <body>
-
+<div id="app" class="light">
+  
 <div class="loaderArea">
     <div class="loader"></div>
     <div class="text"></div>
 </div>
 
-<div id="app" class="light">
     {% include 'inc/nav.html' %}
 
     <div class="animation"></div>
@@ -48,6 +48,7 @@
                     <th scope="col">Time</th>
                     <th scope="col">Severenity</th>
                     <th scope="col">Event</th>
+                    <th scope="col">Type of the event</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -63,8 +64,6 @@
               </table>
         </div>
     </main>
-</div>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
         integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
@@ -76,6 +75,6 @@
 
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/theme.js' %}"></script>
-
+</div>
 </body>
 </html>
