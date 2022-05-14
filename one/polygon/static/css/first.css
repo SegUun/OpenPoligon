@@ -2,10 +2,26 @@ main {
     text-align: center;
 }
 
+.p5Canvas {
+    text-align: center;
+}
+
 /* светлая тема */
 .light {
     background-color: black;
     height: 100vh;
+}
+
+.light .table {
+    margin-top: 100px;
+    text-align: center;
+    color: black;
+}
+
+.light .net {
+    color: white; 
+    font-size: 60px; 
+    margin-top: 200px;
 }
 
 .light .animation {
@@ -43,6 +59,19 @@ main {
 .dark {
     background-color: white;
     height: 100vh;
+}
+
+.light .table {
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+}
+
+/* network topology div class */
+.dark .net {
+    color: black; 
+    font-size: 60px; 
+    margin-top: 200px;
 }
 
 .dark .animation {

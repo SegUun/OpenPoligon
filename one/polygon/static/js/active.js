@@ -74,7 +74,7 @@ export const sketch = (p) => {
             this.edgeLength = unit.edgeLength;
             this.currentPosition = Object.assign({}, this.startCenter);
             this.delay = p.random(100, 100);
-            this.speed = p.random(1, 7);
+            this.speed = p.random(2, 5);
         }
         restart() {
             this.baseDelay = p.frameCount;
@@ -85,13 +85,14 @@ export const sketch = (p) => {
                 return;
             }
             if (p.dist(this.startCenter.x, this.startCenter.y, this.currentPosition.x, this.currentPosition.y) <=
-                (canvasHeight * 5) / this.edgeLength) {
+                (canvasHeight * 25) / this.edgeLength) {
                 this.currentPosition = {
-                    x: this.currentPosition.x - this.speed,
+                    x: this.currentPosition.x + this.speed,
                     y: this.currentPosition.y - this.speed,
                 };
                 this.alpha -= this.speed;
             }
+            
             else {
                 this.isStop = true;
                 this.currentPosition = Object.assign({}, this.startCenter);
