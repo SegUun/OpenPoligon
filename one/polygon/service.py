@@ -15,5 +15,3 @@ def get_zabbix_logs():
 
 # Logout from Zabbix
 # zapi.user.logout()
-
-logs_json = get_zabbix_logs()

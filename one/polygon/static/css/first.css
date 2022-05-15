@@ -152,7 +152,7 @@
     height: 100vh;
 }
 
-.light main {
+.dark main {
   text-align: center;
   background-color: white;
 }
@@ -198,6 +198,7 @@
     display:inline-block;
     clip-path: inset(0 1.3ch 0 0);
     animation: l 1s steps(6) infinite;
+    background-color: white;
   }
   
   @keyframes l {
