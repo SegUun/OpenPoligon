@@ -1,3 +1,4 @@
 Django==4.0.2
 python-decouple==3.6
 whitenoise==6.0.0
+py-zabbix==1.1.7

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>{{title}}</title>
+
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="{% static 'css/first.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/second.css' %}" />
+  </head>
+
+  <body>
+    <div id="app" class="light_logs">
+      <div class="loaderArea">
+        <div class="loader"></div>
+        <div class="text"></div>
+      </div>
+
+      {% include 'inc/nav.html' %}
+
+      <div class="animation"></div>
+      <div class="animation2"></div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 3%">№</th>
+            <th scope="col" style="width: 10%">Time</th>
+            <th scope="col" style="width: 5%">Severenity</th>
+            <th scope="col" style="width: 15%">Event</th>
+            <th scope="col" style="width: 15%">Type of the event</th>
+            <th scope="col" style="width: 13%">Type of object</th>
+            <th scope="col" style="width: 10%">State of the related object</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for key, value in logs.items %}
+          <tr style="text-align: left">
+            <th scope="row">{{ key }}</th>
+            {% for item in value %}
+            <td style="text-align: left">{{ item }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="zab_div">Zabbix Events</div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/theme.js' %}"></script>
+  </body>
+</html>

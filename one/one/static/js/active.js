@@ -74,7 +74,7 @@ export const sketch = (p) => {
             this.edgeLength = unit.edgeLength;
             this.currentPosition = Object.assign({}, this.startCenter);
             this.delay = p.random(100, 100);
-            this.speed = p.random(1, 7);
+            this.speed = p.random(2, 5);
         }
         restart() {
             this.baseDelay = p.frameCount;
@@ -85,13 +85,14 @@ export const sketch = (p) => {
                 return;
             }
             if (p.dist(this.startCenter.x, this.startCenter.y, this.currentPosition.x, this.currentPosition.y) <=
-                (canvasHeight * 5) / this.edgeLength) {
+                (canvasHeight * 25) / this.edgeLength) {
                 this.currentPosition = {
-                    x: this.currentPosition.x - this.speed,
+                    x: this.currentPosition.x + this.speed,
                     y: this.currentPosition.y - this.speed,
                 };
                 this.alpha -= this.speed;
             }
+            
             else {
                 this.isStop = true;
                 this.currentPosition = Object.assign({}, this.startCenter);
@@ -99,7 +100,14 @@ export const sketch = (p) => {
             }
         }
         display() {
-            p.fill(255, 255, 255, this.alpha);
+            const element = document.querySelector('.animation')
+            const style = getComputedStyle(element).backgroundColor
+            if (style.length == 12) {
+                p.fill(Number(style.slice(4, 5)), Number(style.slice(7, 8)), Number(style.slice(10, 11)), this.alpha);
+            } else {
+                p.fill(Number(style.slice(4, 7)), Number(style.slice(9, 12)), Number(style.slice(14, 17)), this.alpha);
+            }
+
             p.push();
             p.translate(this.currentPosition.x, this.currentPosition.y);
             p.triangle(-this.edgeLength / 2, -this.edgeLength / 2, -this.edgeLength / 2 + this.edgeLength, -this.edgeLength / 2, -this.edgeLength / 2, -this.edgeLength / 2 + this.edgeLength);
@@ -111,7 +119,7 @@ export const sketch = (p) => {
         p.createCanvas(canvasWidth, canvasHeight);
         p.angleMode(p.DEGREES);
         p.noStroke();
-        const repetition = 11;
+        const repetition = 10;
         const unitEdgeLength = 500 / repetition;
         const grid = new Grid(250, 250, unitEdgeLength, repetition);
         grid.divide();
@@ -120,7 +128,9 @@ export const sketch = (p) => {
         });
     };
     p.draw = () => {
-        p.background("#000000");
+        const element = document.querySelector('.animation2')
+        const style = getComputedStyle(element).backgroundColor
+        p.background(String(style))
         p.translate(canvasWidth / 2, canvasHeight / 2);
         p.rotate(45);
         p.translate(-canvasWidth / 2, -canvasHeight / 2);

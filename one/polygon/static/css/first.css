@@ -1,11 +1,79 @@
-main {
+.p5Canvas {
     text-align: center;
 }
 
-/* светлая тема */
+/* light theme */
 .light {
     background-color: black;
     height: 100vh;
+    display: table;
+    width: 100%;
+}
+
+.light_logs {
+  background-color: black;
+  height: 100vh;
+  display: table;
+  width: 100%;
+}
+
+.light main {
+  text-align: center;
+  background-color: black;
+  
+}
+
+.light .zab_div {
+    font-size: 40px; 
+    color: white; 
+
+    margin-top: 86px;
+    /* display: inline-block;  */
+    position: sticky;
+    top: 50px;
+    /* position: fixed; */
+    float: right;
+
+    margin-right: 140px; 
+    border-left: 3px solid transparent; 
+    border-color: white; 
+    /* height: 100%;  */
+    padding:15px;
+}
+
+/* .light .logs {
+  background-color: black;
+} */
+
+.light .table {
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    width: 1250px; 
+    margin-left: 20px; 
+    /* display: inline-block; */
+    float: left;
+    /* table-layout:fixed;
+    height:100%; */
+    
+}
+
+/* network topology div class */
+.light .net {
+    color: white; 
+    font-size: 60px; 
+    margin-top: 200px;
+    display:inline-block;
+    clip-path: inset(0 1.3ch 0 0);
+    animation: l 1s steps(6) infinite;
+    background-color: black;
+  }
+  
+  @keyframes l {
+    to {
+      clip-path: inset(0 -1ch 0 0)
+    }
 }
 
 .light .animation {
@@ -27,22 +95,116 @@ main {
     color: white;
 }
 
+.light .middle{
+    position: absolute;
+    top: 50%;
+    left: 500px;
+    transform: translate(-50%,-50%);
+  }
+
+.light .btn{
+    position: relative;
+    display: block;
+    color: black;
+    /* font-size: 14px;     */
+    margin: 30px 0;
+    padding: 14px 60px;
+    overflow: hidden;
+    transition: 1s all ease;
+  }
+
+.light .btn::before{
+    background: white;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+  }
+  
+.light .btn3::before{
+    width: 100%;
+    height: 0%;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+
+.light .btn3:hover::before{
+    height: 380%;
+  }
+
 .light .navbar-default .navbar-nav > li > a {
     color: white;
-    margin-left: 50px;
+    margin-left: 0px;
 }
 
 .light .navbar-default .navbar-nav > li > a:hover,
 .light .navbar-default .navbar-nav > li > a:focus {
-    color: grey;
+    color: black;
 }
 
 
 
-/* темная тема */
+/* dark theme */
 .dark {
     background-color: white;
     height: 100vh;
+}
+
+.dark main {
+  text-align: center;
+  background-color: white;
+}
+
+.dark .zab_div {
+  font-size: 40px; 
+  color: black; 
+
+  margin-top: 86px;
+  /* display: inline-block;  */
+  position: sticky;
+  top: 50px;
+  /* position: fixed; */
+  float: right;
+
+  margin-right: 140px; 
+  border-left: 3px solid transparent; 
+  border-color: black; 
+  /* height: 100%;  */
+  padding:15px;
+}
+
+/* .dark .logs {
+  background-color: white;
+} */
+
+.dark .table {
+  margin-top: 50px;
+  text-align: center;
+  color: black;
+  background-color: white;
+  width: 1250px; 
+  margin-left: 20px; 
+  /* display: inline-block; */
+  float: left;
+}
+
+/* network topology div class */
+.dark .net {
+    color: black; 
+    font-size: 60px; 
+    margin-top: 200px;
+    display:inline-block;
+    clip-path: inset(0 1.3ch 0 0);
+    animation: l 1s steps(6) infinite;
+    background-color: white;
+  }
+  
+  @keyframes l {
+    to {
+      clip-path: inset(0 -1ch 0 0)
+    }
 }
 
 .dark .animation {
@@ -64,12 +226,66 @@ main {
     color: black;
 }
 
+.dark .middle{
+    position: absolute;
+    top: 50%;
+    left: 500px;
+    transform: translate(-50%,-50%);
+  }
+
+.dark .btn{
+    position: relative;
+    display: block;
+    color: black;
+    /* font-size: 14px;     */
+    margin: 30px 0;
+    padding: 14px 60px;
+    overflow: hidden;
+    transition: 1s all ease;
+  }
+
+.dark .btn::before{
+    background: black;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+  }
+  
+.dark .btn3::before{
+    width: 100%;
+    height: 0%;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+
+.dark .btn3:hover::before{
+    height: 380%;
+  }
+
 .dark .navbar-default .navbar-nav > li > a {
     color: black;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 .dark .navbar-default .navbar-nav > li > a:hover,
 .dark .navbar-default .navbar-nav > li > a:focus {
-    color: rgb(207, 207, 207);
+    color: white;
 }
+
+/*  Scrollbar */
+body::-webkit-scrollbar {
+    width: 10px;
+  }
+   
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    background-color: black;
+  }
+   
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(240deg, #000000, #434343, #ECE9E6);
+    outline: 1px solid slategrey;
+  }

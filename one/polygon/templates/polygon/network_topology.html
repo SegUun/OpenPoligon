@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" href="{% static 'css/first.css' %}">
     <link rel="stylesheet" href="{% static 'css/second.css' %}">
+    <link rel="icon" href="http://example.com/favicon.png">
 </head>
 
 <body>
@@ -34,15 +35,14 @@
     <div class="loader"></div>
     <div class="text"></div>
 </div>
-    
+
     {% include 'inc/nav.html' %}
-    
 
     <div class="animation"></div>
     <div class="animation2"></div>
 
     <main>
-        <canvas id="defaultCanvas0" class="p5Canvas"></canvas>
+        <div class="net">Work in progress...</div>
     </main>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -55,7 +55,6 @@
         crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-<script id="rendered-js" type="module" src="{% static 'js/active.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/theme.js' %}"></script>
 </div>
 </body>
