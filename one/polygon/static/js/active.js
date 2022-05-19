@@ -119,7 +119,7 @@ export const sketch = (p) => {
         p.createCanvas(canvasWidth, canvasHeight);
         p.angleMode(p.DEGREES);
         p.noStroke();
-        const repetition = 10;
+        const repetition = 9;
         const unitEdgeLength = 500 / repetition;
         const grid = new Grid(250, 250, unitEdgeLength, repetition);
         grid.divide();

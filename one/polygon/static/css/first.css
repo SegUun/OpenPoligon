@@ -141,7 +141,7 @@
 
 .light .navbar-default .navbar-nav > li > a:hover,
 .light .navbar-default .navbar-nav > li > a:focus {
-    color: black;
+    color: white;
 }
 
 
@@ -272,7 +272,7 @@
 
 .dark .navbar-default .navbar-nav > li > a:hover,
 .dark .navbar-default .navbar-nav > li > a:focus {
-    color: white;
+    color: black;
 }
 
 /*  Scrollbar */
