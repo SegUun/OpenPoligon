@@ -139,7 +139,9 @@
     margin-left: 0px;
 }
 
-.light .navbar-default .navbar-nav > li > a:hover,
+.light .navbar-default .navbar-nav > li > a:hover {
+  color: black;
+}
 .light .navbar-default .navbar-nav > li > a:focus {
     color: white;
 }
@@ -270,10 +272,13 @@
     /* margin-left: 50px; */
 }
 
-.dark .navbar-default .navbar-nav > li > a:hover,
+.dark .navbar-default .navbar-nav > li > a:hover {
+    color: white;
+}
 .dark .navbar-default .navbar-nav > li > a:focus {
     color: black;
 }
+
 
 /*  Scrollbar */
 body::-webkit-scrollbar {
