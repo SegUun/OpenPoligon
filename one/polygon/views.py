@@ -9,15 +9,19 @@ def index(request):
     return render(request, 'polygon/index.html', {'title': 'OpenPolygon'})
 
 def logs(request):
-    logs_json = get_zabbix_logs()
+    logs_json = get_zabbix_logs() # аутентификация
 
-    severity = {0: 'Not classified', 1: 'Information', 2: 'Warning', 3: 'Average', 4: 'High', 5: 'Disaster'} # severity of the event
-    source = {0: 'Trigger', 1: 'Discovery rule', 2: 'Active agent autoregistration', 3: 'Internal event', 4: 'Service status update'} # type of the event
-    object = {0: 'Trigger', 1: 'Discovered host', 2: 'Discovered service', 3: 'Auto-registered host', 4: 'Item', 5: 'LLD rule', 6: 'Service'} # type of object that is related to the event.
-    value = {0: 'OK', 1: 'Problem', 2: 'host or service discovered', 3: 'host or service lost'} # state of the related object
+    severity = {0: 'Not classified', 1: 'Information', 2: 'Warning', 3: 'Average', 4: 'High', 5: 'Disaster'} # важноть события
+    source = {0: 'Trigger', 1: 'Discovery rule', 2: 'Active agent autoregistration', 3: 'Internal event', 4: 'Service status update'} # тип события
+    object = {0: 'Trigger', 1: 'Discovered host', 2: 'Discovered service', 3: 'Auto-registered host', 4: 'Item', 5: 'LLD rule', 6: 'Service'} # тип объекта, к которому относится событие
+    value = {0: 'OK', 1: 'Problem', 2: 'host or service discovered', 3: 'host or service lost'} # состояние связанного объекта
 
+    '''
+    генератор словаря где ключ - индекс + 1 (так как индекс идет с 0 а нам он понадобится для нумерации ивентов в таблице на сайте, мы же не будем нумеровать с 0)
+    значение - информация выгружаемая в поле таблицы из json документа, полученного из zabbix api
+    '''
     logs = {i+1: (
-        datetime.utcfromtimestamp(int(logs_json['result'][i]['clock'])).strftime('%Y-%m-%d %H:%M:%S'), 
+        datetime.utcfromtimestamp(int(logs_json['result'][i]['clock'])).strftime('%Y-%m-%d %H:%M:%S'),
         severity[int(logs_json['result'][i]['severity'])], 
         logs_json['result'][i]['name'],
         source[int(logs_json['result'][i]['source'])],
